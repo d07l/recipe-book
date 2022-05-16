@@ -10,9 +10,8 @@ with open('book.txt', 'r', encoding='utf-8') as file:
        value = set(value)
        book[key] = value
 products = set(products)
+
 ingredients = []
-
-
 def membership_test(user_lst):
    goods = []
    for ingredient in user_lst:

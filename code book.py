@@ -13,9 +13,9 @@ products = set(products)
 ingredients = []
 
 
-def membership_test(ingredients):
+def membership_test(user_lst):
    goods = []
-   for ingredient in ingredients:
+   for ingredient in user_lst:
        if ingredient in products:
            goods += ingredient
        else:
@@ -29,12 +29,12 @@ def meals():
            ingred = str(user_lst.intersection(v))
            ingred = ingred.replace('{', '')
            ingred = ingred.replace('}', '')
-           print(f'Вы можете приготовить "{k}", используя следующие продукты: ', ingred)
+           print(f'Вы можете приготовить "{k}", используя следующие продукты:', ingred)
            addition = v - user_lst
            if addition:
                addition_lst = list(addition)
-               print('Вам также понадобятся следующие ингредиенты:')
-               print(', '.join(addition_lst))
+               print('Вам так же понадобятся следующие ингредиенты:')
+               print(', '.join(addition_lst), "\n")
 
 
 print('Добро пожаловать! Здесь Вы найдете блюдо по вкусу! :)')
@@ -46,9 +46,9 @@ while True:
    choice = input('Добавить еще продукты? ').lower().strip()
    if choice == 'нет':
        user_lst = set(ingredients)
-       if membership_test(ingredients):
+       if membership_test(user_lst):
            meals()
-       print('Спасибо что воспользовались нашей книгой!)')
+       print('Спасибо, что воспользовались нашей книгой!)')
        break
    elif choice != 'да':
        print('Ошибка! Начните сначала')

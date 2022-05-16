@@ -2,19 +2,25 @@ import re
 with open('book.txt', 'r', encoding='utf-8') as file:
    onstring = file.read().split('\n')
    book = {}
+   products = []
    for item in onstring:
        key = item.split('_')[0]
        value = item.split('_')[1:]
+       products += value
        value = set(value)
        book[key] = value
-
-
-ingredients = []
-products = []
-for v in book.values():
-   product = list(v)
-   products += product
 products = set(products)
+ingredients = []
+
+
+def membership_test(ingredients):
+   goods = []
+   for ingredient in ingredients:
+       if ingredient in products:
+           goods += ingredient
+       else:
+           print(f'Извините, в нашей книге нет блюд с такими продуктами: "{ingredient}" :(')
+   return goods
 
 
 def meals():
@@ -31,16 +37,6 @@ def meals():
                print(', '.join(addition_lst))
 
 
-def membership_test(ingredients):
-   goods = []
-   for ingredient in ingredients:
-       if ingredient in products:
-           goods += ingredient
-       else:
-           print(f'Извините, в нашей книге нет блюд с такими продуктами "{ingredient}" :(')
-   return goods
-
-
 print('Добро пожаловать! Здесь Вы найдете блюдо по вкусу! :)')
 while True:
    user_input = input('Введите ингредиенты через запятую: ').lower().strip()
@@ -52,7 +48,7 @@ while True:
        user_lst = set(ingredients)
        if membership_test(ingredients):
            meals()
-       print('Спасибо что воспользовались нашей книгой!) ')
+       print('Спасибо что воспользовались нашей книгой!)')
        break
    elif choice != 'да':
        print('Ошибка! Начните сначала')

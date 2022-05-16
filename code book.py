@@ -53,3 +53,5 @@ while True:
    elif choice != 'да':
        print('Ошибка! Начните сначала')
        break
+
+      

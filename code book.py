@@ -11,7 +11,6 @@ with open('book.txt', 'r', encoding='utf-8') as file:
        book[key] = value
 products = set(products)
 
-ingredients = []
 def membership_test(user_lst):
    goods = []
    for ingredient in user_lst:
@@ -37,6 +36,7 @@ def meals():
 
 
 print('Добро пожаловать! Здесь Вы найдете блюдо по вкусу! :)')
+ingredients = []
 while True:
    user_input = input('Введите ингредиенты через запятую: ').lower().strip()
    user_input = re.sub(r'\s+', ' ', user_input)
